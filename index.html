@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Estratégico Interactivo</title>
+    <style>
+        body {
+            font-family: 'Arimo', sans-serif;
+            background-color: #E5EBF4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .output {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 10px;
+        }
+        #cta {
+            color: #22C0DC;
+            margin-top: 20px;
+            text-align: center;
+        }
+        #cta button {
+            background-color: #01BD39;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #cta button:hover {
+            background-color: #019B31;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Diseña tu Plan Estratégico</h1>
+    <p>Completa los campos para recibir recomendaciones personalizadas para tu desarrollo profesional.</p>
+
+    <div class="section">
+        <label for="purpose">1. Define tu propósito (¿Qué te motiva a crecer profesionalmente?):</label>
+        <textarea id="purpose" rows="3" style="width: 100%;"></textarea>
+    </div>
+
+    <div class="section">
+        <label for="skills">2. Enumera tus habilidades y fortalezas principales:</label>
+        <textarea id="skills" rows="3" style="width: 100%;"></textarea>
+    </div>
+
+    <div class="section">
+        <label for="goals">3. Establece un objetivo principal (a corto, medio o largo plazo):</label>
+        <textarea id="goals" rows="3" style="width: 100%;"></textarea>
+    </div>
+
+    <button onclick="generatePlan()">Generar Plan Estratégico</button>
+
+    <div class="section output" id="output" style="display:none;"></div>
+
+    <div id="cta">
+        <p>Descubre el Secreto de Reinventarse Profesionalmente en Solo 14 Días</p>
+        <button onclick="window.location.href='https://klicana.work/Ecpzgd'">
+            ¡SÍ! INSCRIBIRME EN “ASISTENTE VIRTUAL EN 14 DÍAS”
+        </button>
+    </div>
+
+    <script>
+        function generatePlan() {
+            const purpose = document.getElementById('purpose').value.trim();
+            const skills = document.getElementById('skills').value.trim();
+            const goals = document.getElementById('goals').value.trim();
+
+            if (!purpose || !skills || !goals) {
+                alert('Por favor, completa todos los campos.');
+                return;
+            }
+
+            const skillList = skills.split(',').map(skill => skill.trim());
+            let suggestions = `
+                <h2>Tu Plan Estratégico Personalizado</h2>
+                <p><strong>Propósito:</strong> ${purpose}</p>
+                <p><strong>Habilidades:</strong> ${skillList.join(', ')}</p>
+                <p><strong>Objetivo:</strong> ${goals}</p>
+                <h3>Sugerencias Personalizadas:</h3>
+                <ul>
+                    <li>Empieza desarrollando tu habilidad clave: ${skillList[0]}.</li>
+                    <li>Crea una red de contactos en plataformas como LinkedIn, enfocada en tu objetivo: "${goals}".</li>
+                    <li>Incorpora tu propósito en tu marca personal. Por ejemplo, utiliza frases como "${purpose}" en tus perfiles.</li>
+                    <li>Busca oportunidades de colaboración para potenciar tus habilidades, como ${skillList[1] || 'una habilidad adicional'}.</li>
+                    <li>Establece métricas claras para evaluar tu progreso hacia: "${goals}".</li>
+                </ul>
+                <h3>Consejo Extra:</h3>
+                <p>Cuando enfrentes clientes, destaca cómo tus fortalezas (${skillList.slice(0, 2).join(' y ')}) pueden resolver sus problemas de forma efectiva.</p>
+            `;
+
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = suggestions;
+            outputDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
